@@ -15,7 +15,7 @@ export enum ComplexityTypes {
 
 type ComplexityData = Record<ComplexityTypes, TComplexityData>
 
-export function isOfTypeTimeComplexity (str: string): str is ComplexityTypes {
+export function isOfTypeComplexity (str: string): str is ComplexityTypes {
   return Object.values(ComplexityTypes).includes(str as ComplexityTypes)
 }
 

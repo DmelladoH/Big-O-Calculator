@@ -7,7 +7,7 @@ import Header from './components/Header'
 
 function App () {
   return (
-    <div className="flex flex-col align-middle h-screen w-screen">
+    <div className="flex flex-col align-middle w-screen bg-background">
       <Header />
       <Router>
         <Route path='/' component={Home} />
