@@ -34,15 +34,14 @@ export default function CodeEditor () {
   }
 
   return (
-    <section className='align-middle justify-center sm:h-full'>
+    <section className='align-middle justify-center sm:h-fit'>
         <Editor
           language='typescript'
-          height='100vh'
+          height='90.985vh'
           theme='vs-dark'
           onMount={handleEditorDidMount}
           options={options}
-          />;
-
+          />
     </section>
   )
 }

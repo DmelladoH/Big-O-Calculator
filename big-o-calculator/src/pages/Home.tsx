@@ -3,12 +3,13 @@ import CodeEditor from '../components/CodeEditor'
 
 export default function Home () {
   return (
-    <main className='flex flex-col bg-zinc-800 sm:flex-row'>
-        <div className='flex w-screen sm:w-4/6 flex-col'>
+    <div className='flex-col flex w-screen bg-background sm:flex-row' style={{ height: 'calc(100% - 100px);' }}>
+        <main className='flex flex-1 w-screen sm:w-4/6 flex-col'>
           <CodeEditor/>
-        </div>
+        </main>
         <Aside />
-    </main>
+        { /* <div className='flex flex-col bg-zinc-800 sm:flex-row' style={{ height: 'calc(100% - 100px);' }}> */ }
+    </div>
   )
 }
 

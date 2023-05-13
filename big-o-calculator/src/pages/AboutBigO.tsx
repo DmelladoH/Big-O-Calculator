@@ -62,10 +62,20 @@ export default function AboutBigO () {
 
             <section className='py-4'>
               <h3 className="mb-5 text-3xl text-pink_primary">Types of complexity</h3>
-              <figure className='py-5'>
-                <img src="/public/a.png" className="text-center" width={'520px'} height={'50px'}/>
-                <figcaption className="text-white">Big O Complexity Chart</figcaption>
-              </figure>
+              <div className='flex flex-col sm:flex-row gap-4'>
+                <figure >
+                  <img src="/public/bigO-chart.png" className="text-center" width={'520px'} height={'50px'}/>
+                  <figcaption className="text-white">Big O Complexity Chart</figcaption>
+                </figure>
+                <div className='flex flex-col gap-3'>
+                    <span className='px-5 py-2 rounded-sm bg-green-400 text-black'>Excellent</span>
+                    <span className='px-5 py-2 rounded-sm bg-green-500 text-black'>Good</span>
+                    <span className='px-5 py-2 rounded-sm bg-yellow-500 text-black'>Fair</span>
+                    <span className='px-5 py-2 rounded-sm bg-orange-500 text-black'>Bad</span>
+                    <span className='px-5 py-2 rounded-sm bg-red-500 text-black'>Horrible</span>
+
+                </div>
+              </div>
               <section className="flex flex-col gap-2">
                 <h4 className="text-xl text-pink_secondary my-7">O(1) - Constant</h4>
                 <p>Algorithms with constant complexity take the same amount of time to execute, regardless of the input size. These algorithms are highly efficient and are considered the best-case scenario.</p>

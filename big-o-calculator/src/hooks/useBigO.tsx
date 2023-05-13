@@ -1,23 +1,43 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { getBigO } from '../services/getBigO'
+import { ComplexityContext } from '../context/ComplexityContext'
 
 function useBigO () {
-  const [spaceComplexity, setSpaceComplexity] = useState('')
-  const [timeComplexity, setTimeComplexity] = useState('')
-  const [explication, setExplication] = useState('')
+  const context = useContext(ComplexityContext)
+  const [error, setError] = useState(null)
 
-  const handleSubmit = async (code: string): Promise<void> => {
-    try {
-      const res = await getBigO({ code })
+  if (context === undefined) {
+    throw new Error('useBigO must be used within a ComplexityContext')
+  }
+
+  const {
+    timeComplexity,
+    spaceComplexity,
+    explication,
+    setTimeComplexity,
+    setSpaceComplexity,
+    setExplication,
+    isSubmitted,
+    setIsSubmitted
+  } = context
+
+  const handleSubmit = (code: string) => {
+    getBigO({ code }).then(res => {
       setTimeComplexity(res.TimeComplexity)
       setSpaceComplexity(res.SpaceComplexity)
       setExplication(res.Explanation)
-    } catch (error) {
-      console.log(error)
-    }
+      setError(null)
+      console.log('res', res)
+    }).catch(err => {
+      console.log('Error getting the data', err)
+      setError(err)
+    }).finally(() => {
+      setIsSubmitted(true)
+      console.log('finally', isSubmitted)
+    })
   }
 
-  return { spaceComplexity, timeComplexity, explication, handleSubmit }
+  return { timeComplexity, spaceComplexity, explication, error, isSubmitted, handleSubmit }
 }
 
 export default useBigO
