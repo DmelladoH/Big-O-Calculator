@@ -3,7 +3,7 @@ interface TComplexityData {
   name: string
 }
 
-export enum ComplexityTypes {
+export enum ComplexityType {
   O1 = 'O(1)',
   OLogN = 'O(log n)',
   ON = 'O(n)',
@@ -13,18 +13,18 @@ export enum ComplexityTypes {
   ONFactorial = 'O(n!)',
 }
 
-type ComplexityData = Record<ComplexityTypes, TComplexityData>
+type ComplexityData = Record<ComplexityType, TComplexityData>
 
-export function isOfTypeComplexity (str: string): str is ComplexityTypes {
-  return Object.values(ComplexityTypes).includes(str as ComplexityTypes)
+export function isOfTypeComplexity (str: string): str is ComplexityType {
+  return Object.values(ComplexityType).includes(str as ComplexityType)
 }
 
 export const complexityData: ComplexityData = {
-  [ComplexityTypes.O1]: { color: 'text-green-400', name: 'Constant' },
-  [ComplexityTypes.OLogN]: { color: 'text-green-500', name: 'Logarithmic' },
-  [ComplexityTypes.ON]: { color: 'text-yellow-500', name: 'Linear' },
-  [ComplexityTypes.ONLogN]: { color: 'text-orange-500', name: 'Log-Linear' },
-  [ComplexityTypes.ON2]: { color: 'text-red-500', name: 'Quadratic' },
-  [ComplexityTypes.O2N]: { color: 'text-red-500', name: 'Exponential' },
-  [ComplexityTypes.ONFactorial]: { color: 'text-red-500', name: 'Factorial' }
+  [ComplexityType.O1]: { color: 'text-green-400', name: 'Constant' },
+  [ComplexityType.OLogN]: { color: 'text-green-500', name: 'Logarithmic' },
+  [ComplexityType.ON]: { color: 'text-yellow-500', name: 'Linear' },
+  [ComplexityType.ONLogN]: { color: 'text-orange-500', name: 'Log-Linear' },
+  [ComplexityType.ON2]: { color: 'text-red-500', name: 'Quadratic' },
+  [ComplexityType.O2N]: { color: 'text-red-500', name: 'Exponential' },
+  [ComplexityType.ONFactorial]: { color: 'text-red-500', name: 'Factorial' }
 }
