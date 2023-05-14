@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+import { getFromStorage } from '../services/storage'
 
 interface CodeContextValue {
   code: string
@@ -17,7 +18,7 @@ const EMPTY_CONTEXT = {
 export const CodeContext = createContext<CodeContextValue>(EMPTY_CONTEXT)
 
 export function CodeProvider ({ children }: { children: React.ReactNode }) {
-  const [code, setCode] = useState('')
+  const [code, setCode] = useState(getFromStorage('code') ?? '')
   const [isLoading, setIsLoading] = useState(false)
 
   return (

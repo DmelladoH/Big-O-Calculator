@@ -6,7 +6,7 @@ import { useCode } from '../hooks/useCode'
 export default function CodeEditor () {
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null)
 
-  const { setCode } = useCode()
+  const { code, updateCode } = useCode()
 
   function handleEditorDidMount (editor: any, monaco: any) {
     editorRef.current = editor
@@ -18,7 +18,7 @@ export default function CodeEditor () {
 
     editor.onDidChangeModelContent(() => {
       const value = editor.getValue()
-      setCode(value)
+      updateCode(value)
     })
   }
 
@@ -27,7 +27,7 @@ export default function CodeEditor () {
     minimap: { enabled: false },
     folding: false,
     lineNumbersMinChars: 3,
-    fontSize: 16,
+    fontSize: 12,
     scrollBeyondLastLine: false,
     automaticLayout: true,
     contextmenu: false
@@ -38,6 +38,7 @@ export default function CodeEditor () {
         <Editor
           language='typescript'
           height='90.985vh'
+          defaultValue={code}
           theme='vs-dark'
           onMount={handleEditorDidMount}
           options={options}

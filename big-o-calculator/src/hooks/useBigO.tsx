@@ -1,43 +1,37 @@
-import { useContext, useState } from 'react'
+import { useRef, useState } from 'react'
 import { getBigO } from '../services/getBigO'
-import { ComplexityContext } from '../context/ComplexityContext'
+import useComplexity from './useComplexity'
+import { setStorage } from '../services/storage'
 
-function useBigO () {
-  const context = useContext(ComplexityContext)
+function useBigO ({ code = '' }: { code: string }) {
   const [error, setError] = useState(null)
+  const { setTimeComplexity, setSpaceComplexity, setExplication, timeComplexity, spaceComplexity, explication } = useComplexity()
+  const [isSubmitted, setIsSubmitted] = useState(timeComplexity !== '' && spaceComplexity !== '' && explication !== '')
 
-  if (context === undefined) {
-    throw new Error('useBigO must be used within a ComplexityContext')
-  }
+  const prevCodeRef = useRef<string>()
 
-  const {
-    timeComplexity,
-    spaceComplexity,
-    explication,
-    setTimeComplexity,
-    setSpaceComplexity,
-    setExplication,
-    isSubmitted,
-    setIsSubmitted
-  } = context
+  const handleSubmit = () => {
+    if (code === prevCodeRef.current) {
+      return
+    }
 
-  const handleSubmit = (code: string) => {
     getBigO({ code }).then(res => {
+      prevCodeRef.current = code
       setTimeComplexity(res.TimeComplexity)
       setSpaceComplexity(res.SpaceComplexity)
       setExplication(res.Explanation)
+      setStorage('timeComplexity', res.TimeComplexity)
+      setStorage('spaceComplexity', res.SpaceComplexity)
+      setStorage('explication', res.Explanation)
       setError(null)
-      console.log('res', res)
     }).catch(err => {
-      console.log('Error getting the data', err)
       setError(err)
     }).finally(() => {
       setIsSubmitted(true)
-      console.log('finally', isSubmitted)
     })
   }
 
-  return { timeComplexity, spaceComplexity, explication, error, isSubmitted, handleSubmit }
+  return { error, handleSubmit, isSubmitted }
 }
 
 export default useBigO
