@@ -37,7 +37,7 @@ export default function CodeEditor () {
     <section className='align-middle justify-center sm:h-fit'>
         <Editor
           language='typescript'
-          height='90.985vh'
+          height='87vh'
           defaultValue={code}
           theme='vs-dark'
           onMount={handleEditorDidMount}

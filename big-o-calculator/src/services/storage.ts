@@ -1,8 +1,7 @@
 
 export function getFromStorage (key: string): any {
   const value = window.localStorage.getItem(key)
-  console.log('value', value)
-  if (value == null) {
+  if (value == null || value === 'undefined') {
     return null
   }
   return JSON.parse(value)

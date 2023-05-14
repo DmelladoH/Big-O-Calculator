@@ -6,10 +6,7 @@ import ResultDisplay from '../ResultDisplay'
 export default function AsideContent ({ isError }: { isError: boolean }) {
   const ErrorMessage = 'There was an unexpected error. Please try again.'
   const { timeComplexity, spaceComplexity, explication } = useComplexity()
-  console.log('AsideContent')
-  console.log({ timeComplexity, spaceComplexity, explication })
 
-  console.log({ isError })
   if (isError || !isOfTypeComplexity(timeComplexity) || !isOfTypeComplexity(spaceComplexity)) {
     return <ErrorDisplay message={ErrorMessage} />
   }

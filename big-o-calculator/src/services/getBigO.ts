@@ -7,7 +7,6 @@ export async function getBigO ({ code }: { code: string }) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-
     },
     body: JSON.stringify({ code })
   }
