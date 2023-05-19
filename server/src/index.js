@@ -8,11 +8,6 @@ const errorHandler = require('../middleware/errorHandle')
 const app = express()
 const port = process.env.PORT || 3000
 
-// app.use(cors({
-//   // origin: 'http://127.0.0.1:5173/'
-//   origin: '*'
-// }))
-
 app.use(cors({
   origin: '*',
   methods: 'POST', // specify allowed HTTP methods

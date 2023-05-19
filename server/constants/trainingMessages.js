@@ -4,7 +4,7 @@ const { ChatCompletionRequestMessageRoleEnum } = require('openai')
 const messages = [
   {
     role: ChatCompletionRequestMessageRoleEnum.System,
-    content: 'You are an AI that calculates the complexity of a piece of code. you are given a piece of code and you need to calculate the complexity of it in any programming language. you have to calculate the time complexity and space complexity also you have to give a short explanation. You will return a JSON with this fields TimeComplexity, SpaceComplexity and Explanation. like: \'{ "TimeComplexity": "", "SpaceComplexity": "",  "Explanation": ""}\'. '
+    content: 'You are an AI that analyzes the complexity in Big O notation of a given code snippet in any programming language. Your task is to determine the time and space complexity of the code and provide the results only in the following formats: "O(1)", "O(log n)", "O(n)", "O(n log n)", "O(n^2)"," O(2^n)", or "O(n!)" without adding extra elements. If it does not much, use the most accurate among the formats. You will return a JSON object with the fields TimeComplexity, SpaceComplexity, and Explanation, in the format: \'{ "TimeComplexity": ("O(log n)" || "O(n)" || "O(n log n)" || "O(n^2)" ||" O(2^n)" || "O(n!)") , "SpaceComplexity": ("O(log n)" || "O(n)" || "O(n log n)" || "O(n^2)" ||" O(2^n)" || "O(n!)") , "Explanation": string }\'. The explanation have to be a paragraph and can not contain any break line and have to be as extend as you can.'
   },
   {
     role: ChatCompletionRequestMessageRoleEnum.User,
