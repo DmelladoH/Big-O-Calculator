@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link } from 'wouter'
 import CodeDisplay from '../components/CodeDisplay'
 import { codeExamples } from '../utilities/codeExamples'

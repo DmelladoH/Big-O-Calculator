@@ -9,9 +9,9 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.use(cors({
-  origin: '*',
-  methods: 'POST', // specify allowed HTTP methods
-  allowedHeaders: 'Content-Type, Authorization', // specify allowed headers
+  origin: 'https://big-o-calculator.vercel.app/',
+  methods: ['POST'], // specify allowed HTTP methods
+  allowedHeaders: ['Content-Type, Authorization'], // specify allowed headers
   optionsSuccessStatus: 200 // specify the status code for successful pre-flight requests
 }))
 
