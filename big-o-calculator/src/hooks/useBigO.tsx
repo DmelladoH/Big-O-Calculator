@@ -1,40 +1,64 @@
-import { useRef, useState } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { getBigO } from '../services/getBigO'
 import useComplexity from './useComplexity'
 import { setStorage } from '../services/storage'
+import { StateContext } from '../context/StateContext'
+import { isOfTypeComplexity } from '../utilities/ComplexityData'
 
 function useBigO ({ code = '' }: { code: string }) {
-  const [error, setError] = useState(null)
-  const { setTimeComplexity, setSpaceComplexity, setExplication, timeComplexity, spaceComplexity, explication } = useComplexity()
-  const [isSubmitted, setIsSubmitted] = useState(timeComplexity !== '' && spaceComplexity !== '' && explication !== '')
-  const [isLoading, setIsLoading] = useState(false)
-  const prevCodeRef = useRef<string>()
+  const prevCodeRef = useRef<string>('')
+  const isLoadingRef = useRef<boolean>(false)
 
-  const handleSubmit = () => {
-    if (code === prevCodeRef.current || isLoading) {
+  const { setIsLoading, setIsSubmitted, setIsError, isError } = useContext(StateContext)
+  const { setTimeComplexity, setSpaceComplexity, setExplication, timeComplexity } = useComplexity()
+
+  const isErrorRef = useRef<boolean>(isError)
+
+  useEffect(() => {
+    prevCodeRef.current = code
+  }, [timeComplexity]) // TODO find a better way to handle this.
+
+  const handleSubmit = async () => {
+    console.log('useBigO', { code, prevCodeRef, isLoadingRef, isErrorRef })
+    if ((code === prevCodeRef.current || isLoadingRef.current) && !isErrorRef.current) {
       return
     }
+
     setIsLoading(true)
-    getBigO({ code }).then(res => {
+    isLoadingRef.current = true
+
+    try {
+      const res = await getBigO({ code })
+
       prevCodeRef.current = code
-      console.log(res)
+
+      if (!isOfTypeComplexity(res.TimeComplexity) || !isOfTypeComplexity(res.SpaceComplexity)) {
+        throw new Error('Invalid Complexity')
+      }
 
       setTimeComplexity(res.TimeComplexity)
       setSpaceComplexity(res.SpaceComplexity)
       setExplication(res.Explanation)
+
       setStorage('timeComplexity', res.TimeComplexity)
       setStorage('spaceComplexity', res.SpaceComplexity)
       setStorage('explication', res.Explanation)
-      setError(null)
-    }).catch(err => {
-      setError(err)
-    }).finally(() => {
+      setStorage('error', false)
+
+      setIsError(false)
+    } catch (err) {
+      setIsError(true)
+      console.log(err)
+      setStorage('error', true)
+      isErrorRef.current = true
+    } finally {
       setIsSubmitted(true)
       setIsLoading(false)
-    })
+      isLoadingRef.current = false
+    }
   }
 
-  return { error, handleSubmit, isSubmitted, isLoading }
+  return { handleSubmit }
 }
 
 export default useBigO

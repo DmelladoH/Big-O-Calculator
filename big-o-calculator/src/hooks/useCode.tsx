@@ -9,12 +9,12 @@ export function useCode () {
     throw new Error('useCode must be used within a CodeContext')
   }
 
-  const { code, setCode, isLoading, setIsLoading } = context
+  const { code, setCode } = context
 
   const updateCode = (code: string) => {
     setCode(code)
     setStorage('code', code)
   }
 
-  return { code, updateCode, isLoading, setIsLoading }
+  return { code, updateCode }
 }

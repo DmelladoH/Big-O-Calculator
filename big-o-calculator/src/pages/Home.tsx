@@ -1,6 +1,7 @@
 import Aside from '../components/Aside/Aside'
 import CodeEditor from '../components/CodeEditor'
 import { ComplexityProvider } from '../context/ComplexityContext'
+import { StateProvider } from '../context/StateContext'
 
 export default function Home () {
   return (
@@ -9,7 +10,9 @@ export default function Home () {
           <CodeEditor/>
         </main>
         <ComplexityProvider>
-          <Aside />
+          <StateProvider>
+            <Aside />
+          </StateProvider>
         </ComplexityProvider>
     </div>
   )

@@ -7,6 +7,6 @@ export function getFromStorage (key: string): any {
   return JSON.parse(value)
 }
 
-export function setStorage (key: string, value: string) {
+export function setStorage (key: string, value: any) {
   window.localStorage.setItem(key, JSON.stringify(value))
 }
