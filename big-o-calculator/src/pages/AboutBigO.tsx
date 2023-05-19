@@ -27,8 +27,8 @@ export default function AboutBigO () {
                   </div>
             </section>
 
-            <section className="flex flex-col gap-2 mb-10">
-              <h3 className="mb-5 text-3xl text-pink_primary">Why do we need it?</h3>
+            <section className="flex flex-col [&>p]:my-2 gap-2 mb-10">
+              <h3 className="text-3xl text-pink_primary">Why do we need it?</h3>
               <p>We need Big O notation for several reasons:</p>
               <ul className="list-disc pl-5 gap-3 flex flex-col">
                 <li>
@@ -42,30 +42,29 @@ export default function AboutBigO () {
             </section>
 
             <section className="flex flex-col [&>p]:my-2 gap-2 mb-10">
-              <h3 className="mb-5 text-3xl text-pink_primary">Complexity</h3>
+              <h3 className="text-3xl text-pink_primary">Complexity</h3>
               <p>Understanding time and space complexity is critical for designing and analyzing algorithms. In most cases, we want to design algorithms that are both time and space-efficient. However, there is often a trade-off between time and space complexity.
                 An algorithm that is fast may require more memory, while an algorithm that uses less memory may be slower.</p>
 
-              <section className="flex flex-col [&>p]:my-2 mb-5">
+              <section className="flex flex-col [&>p]:my-2 my-5">
                 <h4 className="mb-2 text-xl text-pink_secondary">Time Complexity</h4>
                 <p>Time complexity refers to the amount of time it takes for an algorithm to run.</p>
                 <p>For example, if an algorithm has a time complexity of O(n), it means that the algorithm's running time will grow linearly with the input size. If the input size doubles, the algorithm's running time will also double.</p>
               </section>
 
               <section className="flex flex-col [&>p]:my-2">
-                <h4 className="mb-2text-xl text-pink_secondary">Space Complexity</h4>
+                <h4 className="mb-2 text-xl text-pink_secondary">Space Complexity</h4>
                 <p>Space complexity refers to the amount of memory an algorithm needs to execute.</p>
                 <p>For example, an algorithm with a space complexity of O(n) means that the amount of memory required by the algorithm will grow linearly with the input size.</p>
               </section>
-
             </section>
 
-            <section className='py-4'>
+            <section>
               <h3 className="mb-5 text-3xl text-pink_primary">Types of complexity</h3>
               <div className='flex flex-col sm:flex-row gap-4'>
                 <figure >
                   <img src="/public/bigO-chart.png" className="text-center" width={'520px'} height={'50px'}/>
-                  <figcaption className="text-white">Big O Complexity Chart</figcaption>
+                  <figcaption className="text-white"><a href="https://www.bigocheatsheet.com/" target="_blank" rel="noreferrer">Big O Complexity Chart</a></figcaption>
                 </figure>
                 <div className='flex flex-col gap-3'>
                     <span className='px-5 py-2 rounded-sm bg-green-400 text-black'>Excellent</span>
@@ -77,43 +76,43 @@ export default function AboutBigO () {
                 </div>
               </div>
               <section className="flex flex-col gap-2">
-                <h4 className="text-xl text-pink_secondary my-7">O(1) - Constant</h4>
+                <h4 className="mb-2 mt-4 text-xl text-pink_secondary">O(1) - Constant</h4>
                 <p>Algorithms with constant complexity take the same amount of time to execute, regardless of the input size. These algorithms are highly efficient and are considered the best-case scenario.</p>
                 <p>Examples of algorithms with O(1) time complexity include accessing an element in an array or a hash table, or adding a node to the beginning of a linked list.</p>
                 <CodeDisplay code={codeExamples.constant} language='typescript'/>
               </section>
               <section className="flex flex-col gap-2">
-                <h4 className="text-xl text-pink_secondary my-7">O(log n) - Logarithmic</h4>
+                <h4 className="mb-2 mt-4 text-xl text-pink_secondary">O(log n) - Logarithmic</h4>
                 <p>Algorithms with logarithmic complexity take less time to execute as the input size grows. This type of algorithm is highly efficient, and its performance grows at a slower rate than the input size. </p>
                 <p>Examples of algorithms with O(log n) time complexity include binary search.</p>
                 <CodeDisplay code={codeExamples.logarithmic} language='typescript'/>
               </section>
               <section className="flex flex-col gap-2">
-                <h4 className="text-xl text-pink_secondary my-7">O(n) - Linear</h4>
+                <h4 className="mb-2 mt-4 text-xl text-pink_secondary">O(n) - Linear</h4>
                 <p>Algorithms with linear complexity take an amount of time proportional to the input size to execute. These algorithms are considered moderately efficient and are a common type of algorithm in computer science.</p>
                 <p>Examples of algorithms with O(n) time complexity include linear search, bubble sort, and insertion sort.</p>
                 <CodeDisplay code={codeExamples.linear} language='typescript'/>
               </section>
               <section className="flex flex-col gap-2">
-                <h4 className="text-xl text-pink_secondary my-7">O(n log n) - Log-Linear</h4>
+                <h4 className="mb-2 mt-4 text-xl text-pink_secondary">O(n log n) - Log-Linear</h4>
                 <p>Algorithms with log-linear complexity are often used in sorting algorithms and other complex tasks. </p>
                 <p>Examples of algorithms with O(n log n) time complexity include quicksort, heapsort, and merge sort.</p>
                 <CodeDisplay code={codeExamples.logLinear} language='typescript'/>
               </section>
               <section className="flex flex-col gap-2">
-                <h4 className="text-xl text-pink_secondary my-7">O(n^2) - Quadratic</h4>
+                <h4 className="mb-2 mt-4 text-xl text-pink_secondary">O(n^2) - Quadratic</h4>
                 <p>Algorithms with quadratic complexity take a significantly longer amount of time to execute as the input size grows. These algorithms are considered inefficient, and their performance grows rapidly as the input size increases. </p>
                 <p>Examples of algorithms with O(n^2) time complexity include bubble sort, selection sort, and insertion sort.</p>
                 <CodeDisplay code={codeExamples.quadratic} language='typescript'/>
               </section>
               <section className="flex flex-col gap-2">
-                <h4 className="text-xl text-pink_secondary my-7">O(2^n) - Exponential</h4>
+                <h4 className="mb-2 mt-4 text-xl text-pink_secondary">O(2^n) - Exponential</h4>
                 <p>Algorithms with exponential complexity are considered highly inefficient and often impractical for most applications. These algorithms take a very long time to execute, and their performance grows exponentially as the input size increases. </p>
                 <p>Examples of algorithms with O(2^n) time complexity include the traveling salesman problem and the knapsack problem.</p>
                 <CodeDisplay code={codeExamples.exponential} language='typescript'/>
               </section>
               <section className="flex flex-col gap-2">
-                <h4 className="text-xl text-pink_secondary my-7">O(n!) - Factorial</h4>
+                <h4 className="mb-2 mt-4 text-xl text-pink_secondary">O(n!) - Factorial</h4>
                 <p>Algorithms with factorial complexity are the least efficient and the slowest to execute. These algorithms take an incredibly long time to execute, and their performance grows at an astronomical rate as the input size increases. </p>
                 <p>Examples of algorithms with O(n!) time complexity include brute-force solutions to problems such as the traveling salesman problem and the permutation problem.</p>
                 <CodeDisplay code={codeExamples.factorial} language='typescript'/>
