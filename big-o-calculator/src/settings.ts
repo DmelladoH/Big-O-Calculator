@@ -1,1 +1,1 @@
-export const BIG_O_URL = 'http://localhost:3000'
+export const BIG_O_URL = 'http://big-o-calculator-server-production.up.railway.app'
