@@ -6,7 +6,8 @@ export async function getBigO ({ code }: { code: string }) {
   const req: RequestInit = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
     },
     body: JSON.stringify({ code })
   }
