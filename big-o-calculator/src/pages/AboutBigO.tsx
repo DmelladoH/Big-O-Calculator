@@ -64,7 +64,7 @@ export default function AboutBigO () {
               <h3 className="mb-5 text-3xl text-pink_primary">Types of complexity</h3>
               <div className='flex flex-col sm:flex-row gap-4'>
                 <figure >
-                  <img src="/public/bigO-chart.png" className="text-center" width={'520px'} height={'50px'}/>
+                  <img src="public/bigO-chart.png" className="text-center text-white" alt="BigO chart" width={'520px'} height={'50px'}/>
                   <figcaption className="text-white"><a href="https://www.bigocheatsheet.com/" target="_blank" rel="noreferrer">Big O Complexity Chart</a></figcaption>
                 </figure>
                 <div className='flex flex-col gap-3'>
