@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import './App.css'
 import { Route, Switch } from 'wouter'
+import { Analytics } from '@vercel/analytics/react'
+
 import Home from './pages/Home'
 import AboutBigO from './pages/AboutBigO'
 import Header from './components/Header'
@@ -13,7 +15,7 @@ function App () {
         <Route path='/' component={Home} />
         <Route path='/big-o' component={AboutBigO} />
       </Switch>
-
+      <Analytics />
     </div>
   )
 }
