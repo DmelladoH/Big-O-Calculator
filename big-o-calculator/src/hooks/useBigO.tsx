@@ -19,7 +19,6 @@ function useBigO ({ code = '' }: { code: string }) {
   }, [timeComplexity]) // TODO find a better way to handle this.
 
   const handleSubmit = async () => {
-    console.log('useBigO', { code, prevCodeRef, isLoadingRef, isErrorRef })
     if ((code === prevCodeRef.current || isLoadingRef.current) && !isErrorRef.current) {
       return
     }

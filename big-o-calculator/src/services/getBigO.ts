@@ -1,7 +1,6 @@
 import { BIG_O_URL } from '../settings'
 
 export async function getBigO ({ code }: { code: string }) {
-  console.log({ code })
   const url = `${BIG_O_URL}/api/getBigO`
   const req: RequestInit = {
     method: 'POST',
