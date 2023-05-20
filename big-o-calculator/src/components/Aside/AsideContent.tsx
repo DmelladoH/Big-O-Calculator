@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import useBigO from '../../hooks/useBigO'
 import { useCode } from '../../hooks/useCode'
 import useComplexity from '../../hooks/useComplexity'
-import { isOfTypeComplexity } from '../../utilities/ComplexityData'
 import { ErrorDisplay } from '../ErrorDisplay'
 import ResultDisplay from '../ResultDisplay'
 import { AsideButton } from './AsideButtonContainer'
@@ -15,7 +14,7 @@ export default function AsideContent () {
   const { handleSubmit } = useBigO({ code })
   const { isError } = useContext(StateContext)
 
-  const loadingError = isError || !isOfTypeComplexity(timeComplexity) || !isOfTypeComplexity(spaceComplexity)
+  const loadingError = isError
   return (
     <>
        <header>

@@ -3,7 +3,7 @@ import { getBigO } from '../services/getBigO'
 import useComplexity from './useComplexity'
 import { setStorage } from '../services/storage'
 import { StateContext } from '../context/StateContext'
-import { isOfTypeComplexity } from '../utilities/ComplexityData'
+// import { isOfTypeComplexity } from '../utilities/ComplexityData'
 
 function useBigO ({ code = '' }: { code: string }) {
   const prevCodeRef = useRef<string>('')
@@ -31,9 +31,9 @@ function useBigO ({ code = '' }: { code: string }) {
 
       prevCodeRef.current = code
 
-      if (!isOfTypeComplexity(res.TimeComplexity) || !isOfTypeComplexity(res.SpaceComplexity)) {
-        throw new Error('Invalid Complexity')
-      }
+      // if (!isOfTypeComplexity(res.TimeComplexity) || !isOfTypeComplexity(res.SpaceComplexity)) {
+      //   throw new Error('Invalid Complexity')
+      // }
 
       setTimeComplexity(res.TimeComplexity)
       setSpaceComplexity(res.SpaceComplexity)
